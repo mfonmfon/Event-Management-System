@@ -20,6 +20,7 @@ public class OrganizerServiceImpl implements OrganizerServices{
     @Autowired
     private OrganizerRepository organizerRepository;
 
+
     @Override
     public AddOrganizerResponse createOrganizer(AddOrganizersRequest request) {
         validateEmail(request.getEmail());
