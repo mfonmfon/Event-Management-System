@@ -35,7 +35,7 @@ class OrganizerServicesTest {
         request.setEmail("mfon@gmail.com");
         request.setPhoneNumber("08123115688");
         request.setPassword("12345");
-        AddOrganizerResponse response = organizerServices.createOrganizer(request);
+        AddOrganizerResponse response = organizerServices.createEvent(request);
         assertThat(response).isNotNull();
         assertThat(response.getMessage()).contains("Added successfully");
     }
@@ -47,7 +47,7 @@ class OrganizerServicesTest {
         request.setEmail("mfon@gmail.com");
         request.setPhoneNumber("0902345678");
         request.setPassword("1234");
-        AddOrganizerResponse response = organizerServices.createOrganizer(request);
+        AddOrganizerResponse response = organizerServices.createEvent(request);
         assertThat(response).isNotNull();
         request.setCompanyName("Semicolon Africa");
         request.setEmail("mfon@gmail.com");
@@ -55,7 +55,7 @@ class OrganizerServicesTest {
         request.setPassword("1234");
         assertThat(response).isNotNull();
         assertThrows(EmailAlreadyExistException.class, ()->{
-            organizerServices.createOrganizer(request);
+            organizerServices.createEvent(request);
         });
     }
 
@@ -66,7 +66,7 @@ class OrganizerServicesTest {
         request.setEmail("fola@gmail.com");
         request.setPhoneNumber("090234");
         request.setPassword("1743");
-        UpdateOrganizerResponse response = organizerServices.updateOrganizer(request);
+        UpdateOrganizerResponse response = organizerServices.updateEvent(request);
         assertThat(response).isNotNull();
     }
 }

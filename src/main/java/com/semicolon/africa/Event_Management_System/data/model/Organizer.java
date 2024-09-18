@@ -1,19 +1,19 @@
 package com.semicolon.africa.Event_Management_System.data.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.lang.annotation.Documented;
+import java.util.ArrayList;
+import java.util.List;
 
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Getter
 @Setter
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class Organizer {
     @Id
     @GeneratedValue(strategy = SEQUENCE)
@@ -22,4 +22,6 @@ public class Organizer {
     private String email;
     private String password;
     private String phoneNumber;
+    @OneToMany
+    private List<Event> listOfEvent;
 }

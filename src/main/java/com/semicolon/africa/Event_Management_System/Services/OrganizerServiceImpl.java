@@ -6,8 +6,10 @@ import com.semicolon.africa.Event_Management_System.Exception.IdNotFoundExceptio
 import com.semicolon.africa.Event_Management_System.data.model.Organizer;
 import com.semicolon.africa.Event_Management_System.data.repository.OrganizerRepository;
 import com.semicolon.africa.Event_Management_System.dto.request.AddOrganizersRequest;
+import com.semicolon.africa.Event_Management_System.dto.request.HostEventRequest;
 import com.semicolon.africa.Event_Management_System.dto.request.UpdateOrganizerRequest;
 import com.semicolon.africa.Event_Management_System.dto.response.AddOrganizerResponse;
+import com.semicolon.africa.Event_Management_System.dto.response.HostEventResponse;
 import com.semicolon.africa.Event_Management_System.dto.response.UpdateOrganizerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,7 @@ public class OrganizerServiceImpl implements OrganizerServices{
 
 
     @Override
-    public AddOrganizerResponse createOrganizer(AddOrganizersRequest request) {
+    public AddOrganizerResponse createEvent(AddOrganizersRequest request) {
         validateEmail(request.getEmail());
         Organizer organizer = new Organizer();
         addOrganizerRequestMapper(request, organizer);
@@ -37,12 +39,17 @@ public class OrganizerServiceImpl implements OrganizerServices{
         }
     }
     @Override
-    public UpdateOrganizerResponse updateOrganizer(UpdateOrganizerRequest request) {
+    public UpdateOrganizerResponse updateEvent(UpdateOrganizerRequest request) {
         validateEmail(request.getEmail());
         Organizer organizer = findOrganizerByEmail(request.getEmail());
         organizer = organizerRepository.save(organizer);
         updateRequestMapper(request, organizer);
         return updateOrganizerResponseMapper(organizer);
+    }
+
+    @Override
+    public HostEventResponse hostEvent(HostEventRequest request) {
+        return null;
     }
 
     private Organizer findOrganizerByEmail(String email) {
